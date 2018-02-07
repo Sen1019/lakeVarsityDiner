@@ -1,0 +1,110 @@
+body {
+  font-family: 'Barlow';
+}
+
+.navbar {
+	background-color: #2E7F39;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin-bottom: 0px;
+	border: 0px white;
+	border-radius: 0px;
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+	font-family: 'Fugaz One';
+	font-size: 5rem;
+	padding-left: 50px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+
+#usersEmailAddress {
+	font-family: 'Barlow';
+	font-size: 1.5rem;
+	padding-right: 5px;
+	color: #ffffff;
+}
+
+#userDropDown {
+	padding-right: 25px;
+}
+
+.col-md-1, .col-md-6 {
+	padding: 0;
+}
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.container-fluid {
+	padding: 0;
+}
+
+.btn-static {
+  background-color: white;
+  border: 1px solid lightgrey;
+  cursor: default;
+}
+.btn-static:active {
+  -moz-box-shadow:    inset 0 0 0px white;
+  -webkit-box-shadow: inset 0 0 0px white;
+  box-shadow:         inset 0 0 0px white;
+}
+
+.modal-content {
+	border-radius: 0;
+}
+
+.modal-footer {
+	border-top: 0;
+}
+
+.btn:focus, .btn:active, .form-control:focus, .form-control:active, .dropdown, option {
+	outline: none !important;
+	box-shadow: none;
+ }
+
+.navbar-default .navbar-brand:hover {
+    color: #ffffff;
+}
+
+.glyphicon-cog {
+    color: #ffffff;
+}
+
+#userDropDown {
+	background-color: #2E7F39;
+}
+
+.btn:focus,.btn:active {
+	outline: none !important;
+	box-shadow: none;
+ }
+
+ /* For the div around the canvas */
+#wrapper {
+	overflow: auto;
+	/* max-height: 800px; */
+	max-height: 1200px;
+    max-width: 100%;
+}
+
+#threeBurgers {
+	border-radius: 0px;
+}
+
+#menuDropper {
+	text-align: center;
+	background-color: rgb(249, 252, 252);
+}
+
+#adminImg {
+	width: 100%;
+	height: 100%;
+}

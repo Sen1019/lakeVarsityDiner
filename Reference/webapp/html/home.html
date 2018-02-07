@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech Excavator</title>
+
+  <!-- Global variable accessible across entire site -->
+  <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
+  <script type="text/javascript">
+    GARDEN = {};
+    riot.observable(GARDEN);
+    GARDEN.root = "http://localhost:8080/capstone/";
+  </script>
+  <!-- Browser Tab Icon -->
+  <link rel="icon" href="../img/tabIcon.png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Barlow|Fugaz+One|Quicksand|Bad+Script" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- jQuery Validation -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Our Main CSS File -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Custom JS for login page -->
+  <script src="../js/script.js"></script>
+  <script src="../js/fabric.min.js"></script>
+</head>
+
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Tech Excavator</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a id="userDropDown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="usersEmailAddress"></span><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="../html/login.html" id="logoutButton">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</header>
+
+<body>
+  <!-- RIOT -->
+  <gardenDropdown></gardenDropdown>
+  <shoppingList></shoppingList>
+  <gardenCanvas></gardenCanvas>
+  <div id = "wrapper"><canvas id = "c"></canvas></div>
+  <div class="container-fluid">
+    <nav class="navbarBottom navbar-default navbar-fixed-bottom" role="navigation">
+      <div id="menuDropper">
+      <button type="button" class="btn btn-default btn-xs" id="threeBurgers" style="text-align: center" data-toggle="collapse" data-target="#mini">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+   </div>
+    <div id="mini" class="collapse in">
+      <div class="row">
+          <div class="col-md-9">
+              <plotDetails></plotDetails>
+          </div>
+          <div class="col-md-3" style="padding-left: 0;">
+              <plantDirections></plantDirections>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <script src="../tag/shoppingList.tag" type="riot/tag"></script>
+  <script src="../tag/gardenDropdown.tag" type="riot/tag"></script>
+  <script src="../tag/gardenCanvas.tag" type="riot/tag"></script>
+  <script src="../tag/plotDetails.tag" type="riot/tag"></script>
+  <script src="../tag/plantDirections.tag" type="riot/tag"></script>
+  <script>riot.mount('shoppingList')</script>
+  <script>riot.mount('gardenDropdown')</script>
+  <script>riot.mount('gardenCanvas')</script>
+  <script>riot.mount('plotDetails')</script>
+  <script>riot.mount('plantDirections')</script>
+
+</body>
+
+</html>

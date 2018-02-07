@@ -1,0 +1,136 @@
+
+<html>
+<head>
+    <script src = "../js/jquery-3.2.1.min.js"></script>
+    <script src = "../js/fabric.min.js"></script>
+    <script src = "../js/buttons.js"></script>
+</head>
+<body>
+    <canvas id = "c" width = "800" height = "800"></canvas>
+    <!-- <input type="button" value="Some button" id="inline-btn" style="position: absolute; left: 234.148px; top: 293.298px;"> -->
+    <button id = "new-box">New Box</button>
+    <button id = "savePlot">Save Plot</button>
+    <button id = "loadPlot">Load Plot</button>
+    <button id = "setId">Set Id</button>
+    <button id = "getId">Get Id</button>
+    <input type = "color" id = "color"/>
+    <button id = "colorBtn">Change Selection's Color</button>
+    <span id = "height"></span>
+    <span id = "width"></span>
+
+    <script>
+ //Setting up the canvas
+ var canvas = this.__canvas = new fabric.Canvas('c');
+  fabric.Object.prototype.transparentCorners = false;
+  fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+
+  canvas.observe("object:selected",function(e){
+    $("#height").text(Math.round(e.target.height * e.target.scaleY));
+    $('#width').text(Math.round(e.target.width * e.target.scaleX));
+  })
+  canvas.observe("object:scaling",function(e){
+    $("#height").text(Math.round(e.target.height * e.target.scaleY));
+    $('#width').text(Math.round(e.target.width * e.target.scaleX));
+  })
+  canvas.observe("object:moving", function(e){
+      var obj = e.target;
+         // if object is too big ignore
+
+        var halfw = obj.currentWidth/2;
+        var halfh = obj.currentHeight/2;
+        var bounds = {tl: {x: halfw, y:halfh},
+            br: {x: obj.canvas.width , y: obj.canvas.height }
+        };
+
+        // top-left  corner
+        if(obj.top < bounds.br.y || obj.left < bounds.br.x ){
+            obj.top = Math.max(obj.top, '0'  );  
+            obj.left = Math.max(obj.left, '0' )  
+        }
+
+
+            // alert("text");
+        if(obj.top < bounds.tl.y || obj.left < bounds.tl.x){
+            obj.top = Math.max(obj.top, '10'  );
+            obj.left = Math.max(obj.left , '50' ) 
+        }
+
+
+        // bot-right corner
+        if(obj.top > bounds.br.y || obj.left > bounds.br.x ){
+            obj.top = Math.min(obj.top, '800'  );  
+            obj.left = Math.min(obj.left, '800' )  
+        }
+
+});
+
+//Add new rectangle button
+    $("#new-box").on('click',function(){
+        var rectangle = new fabric.Rect({ 
+            left: 100,
+            top: 100,
+            fill: $("#color").val(),
+            width: 200,
+            height: 200,
+        });
+
+        rectangle.toObject = (function(toObject){
+          return function(){
+            return fabric.util.object.extend(toObject.call(this), {
+              id: this.id
+            });
+          };
+        })(rectangle.toObject);
+
+        rectangle.id = "STUFF"
+
+        canvas.add(rectangle);
+        canvas.renderAll();
+    });
+
+//Save a canvas button
+    $("#savePlot").on('click', function(){
+      var json = JSON.stringify(canvas);
+      $.ajax({
+        url: "http://localhost:8080/capstone/savePlot",
+        type: "POST",
+        data:{
+          "json": json,
+        }
+      }).then(function(){
+        alert("Posted");
+      });
+
+    });
+
+    $("#loadPlot").on('click', function(){
+      $.ajax({
+        url: "http://localhost:8080/capstone/getPlot",
+        type: "GET",
+      }).then(function(data){
+        canvas.loadFromJSON(data.json);
+      });
+
+
+    });
+
+    $("#setId").on('click', function(){
+      if(canvas.getActiveObject() != null){
+        canvas.getActiveObject().id = 'Butt';
+      }
+    });
+
+    $("#getId").on("click", function(){
+      alert(canvas.getActiveObject().id);
+    });
+
+    $("#colorBtn").on("click", function(){
+      canvas.getActiveObject().set("fill", $("#color").val());
+    });
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+/*LEAF BACKGROUND ON LOGIN AND REGISTRATION PAGE*/
+body {
+  background-image: url("../img/loginGarden.jpg");
+  background-size: cover;
+}

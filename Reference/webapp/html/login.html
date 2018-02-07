@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech Excavator</title>
+
+  <!-- Global variable accessible across entire site -->
+  <script type="text/javascript">
+    GARDEN = {};
+    GARDEN.root = "http://localhost:8080/capstone/";
+  </script>
+  <!-- Browser Tab Icon -->
+  <link rel="icon" href="../img/tabIcon.png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Barlow|Fugaz+One|Quicksand" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+  <!-- Our Main CSS File -->
+  <link rel="stylesheet" href="../css/loginStyle.css">
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- jQuery Validation -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- RIOT login.tag -->
+  <login></login>
+
+  <!-- RIOT -->
+  <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
+  <script src="../tag/login.tag" type="riot/tag"></script>
+  <script>riot.mount('login')</script>
+</body>
+
+</html>
